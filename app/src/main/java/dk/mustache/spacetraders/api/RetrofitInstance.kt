@@ -11,15 +11,11 @@ object RetrofitInstance {
         .addInterceptor(SafeHttpLoggingInterceptor)
         .build()
 
-    private val retrofit by lazy {
+    val retrofit by lazy {
         Retrofit.Builder()
             .baseUrl("https://api.spacetraders.io/v2/")
             .client(client)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
-    }
-
-    val apiInterface: ApiInterface by lazy {
-        retrofit.create(ApiInterface::class.java)
     }
 }

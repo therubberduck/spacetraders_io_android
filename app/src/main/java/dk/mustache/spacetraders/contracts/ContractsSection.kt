@@ -16,6 +16,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import dk.mustache.spacetraders.common.ScreenEvent
 import dk.mustache.spacetraders.contracts.Contract.ContractState
 import dk.mustache.spacetraders.mdate.MDateFormat
 import dk.mustache.spacetraders.mocking.ContractMocker
@@ -25,7 +26,7 @@ import dk.mustache.spacetraders.ui.theme.Typography
 
 object ContractsSection {
     @Composable
-    fun Create(contracts: List<Contract>, onEvent: (ContractEvent) -> Unit) {
+    fun Create(contracts: List<Contract>, onEvent: (ScreenEvent) -> Unit) {
         FlowRow(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
             contracts.forEach {
                 ContractCard(it, onEvent)
@@ -34,7 +35,7 @@ object ContractsSection {
     }
 
     @Composable
-    fun ContractCard(contract: Contract, onEvent: (ContractEvent) -> Unit) {
+    fun ContractCard(contract: Contract, onEvent: (ScreenEvent) -> Unit) {
         val open = remember { mutableStateOf(false) }
         Column(
             Modifier
@@ -62,7 +63,7 @@ object ContractsSection {
                 LabelValue("Deadline", contract.deadlineString())
                 if (contractState == ContractState.PENDING) {
                     Button(onClick = {
-                        onEvent(ContractEvent.AcceptContract(contract.id))
+                        onEvent(AcceptContract(contract.id))
                     }) {
                         Text("AcceptContract")
                     }

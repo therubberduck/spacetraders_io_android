@@ -29,7 +29,7 @@ data class Contract(
         ContractState.FULFILLED
     } else if (accepted.not()) {
         ContractState.PENDING
-    } else if (expiration < MDate.now()) {
+    } else if (deadline < MDate.now()) {
         ContractState.EXPIRED
     } else {
         ContractState.ACCEPTED

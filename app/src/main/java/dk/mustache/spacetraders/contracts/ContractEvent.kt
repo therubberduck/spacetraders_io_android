@@ -1,5 +1,5 @@
 package dk.mustache.spacetraders.contracts
 
-interface ContractEvent {
-    data class AcceptContract(val contractId: String): ContractEvent
-}
+import dk.mustache.spacetraders.common.ScreenEvent
+
+data class AcceptContract(val contractId: String): ScreenEvent
