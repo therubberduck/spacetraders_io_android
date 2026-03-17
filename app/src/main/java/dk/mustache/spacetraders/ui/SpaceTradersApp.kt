@@ -13,7 +13,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.PreviewScreenSizes
 import dk.mustache.spacetraders.AppDestinations
-import dk.mustache.spacetraders.MainScreen.MainScreen
+import dk.mustache.spacetraders.mainScreen.MainScreen
 
 @PreviewScreenSizes
 @Composable

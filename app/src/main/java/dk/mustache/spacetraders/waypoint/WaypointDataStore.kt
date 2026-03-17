@@ -18,7 +18,7 @@ class WaypointDataStore @Inject constructor(
 
     suspend fun fetchWaypoint(waypointId: WaypointId): DataResult<Waypoint> {
         val result = waypointRepository.getWaypoint(waypointId)
-        if(result is DataResult.Success) {
+        if (result is DataResult.Success) {
             waypoints[waypointId] = result.data
             _allWaypoints.value = waypoints.values.toList()
         }
@@ -27,7 +27,7 @@ class WaypointDataStore @Inject constructor(
 
     suspend fun getWaypoint(waypointId: WaypointId): DataResult<Waypoint> {
         val cachedWaypoint = waypoints[waypointId]
-        if(cachedWaypoint != null) {
+        if (cachedWaypoint != null) {
             return DataResult.Success(cachedWaypoint)
         }
         return fetchWaypoint(waypointId)

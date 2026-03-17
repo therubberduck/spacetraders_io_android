@@ -18,7 +18,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import dk.mustache.spacetraders.common.ScreenEvent
 import dk.mustache.spacetraders.contracts.Contract.ContractState
-import dk.mustache.spacetraders.mdate.MDateFormat
 import dk.mustache.spacetraders.mocking.ContractMocker
 import dk.mustache.spacetraders.ui.LabelValue
 import dk.mustache.spacetraders.ui.theme.Orange

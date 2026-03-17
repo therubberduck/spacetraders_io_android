@@ -5,7 +5,7 @@ import okhttp3.Response
 import okhttp3.logging.HttpLoggingInterceptor
 import timber.log.Timber
 
-object SafeHttpLoggingInterceptor: Interceptor {
+object SafeHttpLoggingInterceptor : Interceptor {
     private val interceptor = HttpLoggingInterceptor().apply {
         level = HttpLoggingInterceptor.Level.BODY
     }
@@ -15,7 +15,10 @@ object SafeHttpLoggingInterceptor: Interceptor {
             interceptor.intercept(chain)
         } catch (e: Throwable) {
             Timber.e(e)
-            ResponseBuilder.makeNewResponse(chain, e.message ?: "Error Occurred in SafeHttpLoggingInterceptor")
+            ResponseBuilder.makeNewResponse(
+                chain,
+                e.message ?: "Error Occurred in SafeHttpLoggingInterceptor"
+            )
         }
     }
 }

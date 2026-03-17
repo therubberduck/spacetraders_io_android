@@ -1,4 +1,4 @@
-package dk.mustache.spacetraders.MainScreen
+package dk.mustache.spacetraders.mainScreen
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -16,12 +16,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
-import dk.mustache.spacetraders.MainScreen.MainScreen.CreateInstance
 import dk.mustache.spacetraders.agent.Agent
 import dk.mustache.spacetraders.common.ScreenEvent
 import dk.mustache.spacetraders.common.WaypointId
 import dk.mustache.spacetraders.contracts.Contract
 import dk.mustache.spacetraders.contracts.ContractsSection
+import dk.mustache.spacetraders.mainScreen.MainScreen.CreateInstance
 import dk.mustache.spacetraders.mocking.ContractMocker
 import dk.mustache.spacetraders.mocking.WaypointMocker
 import dk.mustache.spacetraders.ui.LabelValue
@@ -56,26 +56,26 @@ object MainScreen {
         waypoint: Waypoint,
         onContractEvent: (ScreenEvent) -> Unit
     ) {
-            Column(
-                modifier = Modifier
-                    .fillMaxSize()
-                    .verticalScroll(rememberScrollState())
-                    .padding(8.dp)
-            ) {
-                AgentSection(agent)
-                Text(
-                    modifier = Modifier.padding(top = 16.dp, bottom = 8.dp),
-                    style = MyTextStyle.SectionTitle,
-                    text = "HQ:"
-                )
-                WaypointSection.Create(waypoint)
-                Text(
-                    modifier = Modifier.padding(top = 16.dp, bottom = 8.dp),
-                    style = MyTextStyle.SectionTitle,
-                    text = "Contracts:"
-                )
-                ContractsSection.Create(contracts, onContractEvent)
-            }
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .verticalScroll(rememberScrollState())
+                .padding(8.dp)
+        ) {
+            AgentSection(agent)
+            Text(
+                modifier = Modifier.padding(top = 16.dp, bottom = 8.dp),
+                style = MyTextStyle.SectionTitle,
+                text = "HQ:"
+            )
+            WaypointSection.Create(waypoint)
+            Text(
+                modifier = Modifier.padding(top = 16.dp, bottom = 8.dp),
+                style = MyTextStyle.SectionTitle,
+                text = "Contracts:"
+            )
+            ContractsSection.Create(contracts, onContractEvent)
+        }
     }
 
     @Composable

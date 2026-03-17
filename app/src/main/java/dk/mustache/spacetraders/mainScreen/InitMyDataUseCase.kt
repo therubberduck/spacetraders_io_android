@@ -1,4 +1,4 @@
-package dk.mustache.spacetraders.MainScreen
+package dk.mustache.spacetraders.mainScreen
 
 import dk.mustache.spacetraders.agent.AgentDataStore
 import dk.mustache.spacetraders.common.UseCase

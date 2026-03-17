@@ -1,5 +1,5 @@
 package dk.mustache.spacetraders.common
 
 interface ScreenEvent {
-    object ClearException: ScreenEvent
+    object ClearException : ScreenEvent
 }

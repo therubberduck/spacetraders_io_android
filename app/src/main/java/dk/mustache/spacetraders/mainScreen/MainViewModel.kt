@@ -1,4 +1,4 @@
-package dk.mustache.spacetraders.MainScreen
+package dk.mustache.spacetraders.mainScreen
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -35,7 +35,11 @@ class MainViewModel @Inject constructor(
                 candidate.symbol == myAgent.value.headquarters.waypointId
             } ?: Waypoint.EMPTY
         }
-    }.stateIn(viewModelScope, started = SharingStarted.WhileSubscribed(5000), initialValue = Waypoint.EMPTY)
+    }.stateIn(
+        viewModelScope,
+        started = SharingStarted.WhileSubscribed(5000),
+        initialValue = Waypoint.EMPTY
+    )
 
     val loadingData = initMyDataUseCase.running
 

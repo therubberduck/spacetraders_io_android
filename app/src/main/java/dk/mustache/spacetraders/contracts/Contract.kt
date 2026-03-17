@@ -1,9 +1,7 @@
 package dk.mustache.spacetraders.contracts
 
-import androidx.compose.ui.graphics.Color
 import dk.mustache.spacetraders.mdate.MDate
 import dk.mustache.spacetraders.mdate.MDateFormat
-import dk.mustache.spacetraders.ui.theme.Orange
 
 data class Contract(
     val id: String,
@@ -21,6 +19,7 @@ data class Contract(
     fun deadlineString() = deadline.show(MDateFormat.DATE_SHORT) +
             " " +
             deadline.show(MDateFormat.TIME)
+
     fun expirationString() = expiration.show(MDateFormat.DATE_SHORT) +
             " " +
             expiration.show(MDateFormat.TIME)

@@ -1,6 +1,6 @@
 package dk.mustache.spacetraders.mdate
 
-import java.util.*
+import java.util.Locale
 
 
 fun String.capitalize(locale: Locale): String {
@@ -51,6 +51,7 @@ fun String.case(
                 this.capitalize(locale)
             }
         }
+
         CaseType.CapWords -> {
             if (force) {
                 this.lowercase(locale).capitalizeWords(locale)
@@ -58,6 +59,7 @@ fun String.case(
                 this.capitalizeWords(locale)
             }
         }
+
         CaseType.LowerCase -> this.lowercase(locale)
         else -> this
     }

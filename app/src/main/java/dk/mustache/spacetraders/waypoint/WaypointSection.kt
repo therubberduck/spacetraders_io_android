@@ -37,17 +37,18 @@ object WaypointSection {
     @Composable
     fun TraitCard(trait: Trait) {
         val open = remember { mutableStateOf(false) }
-        Column(Modifier
-            .padding(top = 8.dp)
-            .border(1.dp, Color.Black, shape = RoundedCornerShape(8.dp))
-            .clickable(onClick = { open.value = !open.value })
-            .padding(8.dp)
+        Column(
+            Modifier
+                .padding(top = 8.dp)
+                .border(1.dp, Color.Black, shape = RoundedCornerShape(8.dp))
+                .clickable(onClick = { open.value = !open.value })
+                .padding(8.dp)
         ) {
             Text(
                 style = Typography.titleSmall,
                 text = trait.name
             )
-            if(open.value) {
+            if (open.value) {
                 Text(trait.description)
             }
         }
