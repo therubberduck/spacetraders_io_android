@@ -41,3 +41,10 @@ data class Contract(
         FULFILLED
     }
 }
+
+data class Deliver(
+    val tradeSymbol: String,
+    val destinationSymbol: String,
+    val unitsRequired: Int,
+    val unitsFulfilled: Int
+)

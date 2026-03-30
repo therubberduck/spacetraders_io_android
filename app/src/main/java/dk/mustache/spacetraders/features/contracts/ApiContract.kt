@@ -14,7 +14,7 @@ data class ApiContract(
 data class ApiTerms(
     val deadline: String?,
     val payment: ApiPayment?,
-    val deliver: List<Deliver?>?
+    val deliver: List<ApiDeliver?>?
 )
 
 data class ApiPayment(
@@ -22,7 +22,7 @@ data class ApiPayment(
     val onFulfilled: Int?
 )
 
-data class Deliver(
+data class ApiDeliver(
     val tradeSymbol: String?,
     val destinationSymbol: String?,
     val unitsRequired: Int?,

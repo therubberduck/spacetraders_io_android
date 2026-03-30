@@ -1,8 +1,9 @@
 package dk.mustache.spacetraders.mocking
 
-import dk.mustache.spacetraders.features.contracts.Contract
-import dk.mustache.spacetraders.features.contracts.Deliver
 import dk.mustache.spacetraders.common.MDate
+import dk.mustache.spacetraders.features.contracts.Contract
+import dk.mustache.spacetraders.features.contracts.ContractModel
+import dk.mustache.spacetraders.features.contracts.Deliver
 
 object ContractMocker {
     fun one(
@@ -43,6 +44,23 @@ object ContractMocker {
     fun standardSet(): List<Contract> {
         return listOf(
             one()
+        )
+    }
+
+    fun oneModel(): ContractModel {
+        return ContractModel(
+            id = "123",
+            state = Contract.ContractState.PENDING,
+            title = "Offer: Copper Ore",
+            faction = "Galactic Empire",
+            deadline = "2023-01-01",
+            expiration = "2023-01-01"
+        )
+    }
+
+    fun standardSetModel(): List<ContractModel> {
+        return listOf(
+            oneModel()
         )
     }
 }

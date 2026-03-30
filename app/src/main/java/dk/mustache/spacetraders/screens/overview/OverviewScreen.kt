@@ -22,18 +22,18 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
-import dk.mustache.spacetraders.features.agent.Agent
 import dk.mustache.spacetraders.common.architecture.ScreenEvent
 import dk.mustache.spacetraders.common.dataclasses.WaypointId
-import dk.mustache.spacetraders.features.contracts.Contract
+import dk.mustache.spacetraders.features.agent.Agent
+import dk.mustache.spacetraders.features.contracts.ContractModel
 import dk.mustache.spacetraders.features.contracts.ContractsSection
-import dk.mustache.spacetraders.screens.overview.OverviewScreen.CreateInstance
-import dk.mustache.spacetraders.mocking.ContractMocker
-import dk.mustache.spacetraders.mocking.WaypointMocker
-import dk.mustache.spacetraders.ui.LabelValue
-import dk.mustache.spacetraders.ui.theme.MyTextStyle
 import dk.mustache.spacetraders.features.waypoint.Waypoint
 import dk.mustache.spacetraders.features.waypoint.WaypointSection
+import dk.mustache.spacetraders.mocking.ContractMocker
+import dk.mustache.spacetraders.mocking.WaypointMocker
+import dk.mustache.spacetraders.screens.overview.OverviewScreen.CreateInstance
+import dk.mustache.spacetraders.ui.LabelValue
+import dk.mustache.spacetraders.ui.theme.MyTextStyle
 
 object OverviewScreen {
     @Composable
@@ -63,7 +63,7 @@ object OverviewScreen {
                     Text(text = "Loading...")
                 }
             }
-            if(exception != null) {
+            if (exception != null) {
                 Dialog(
                     onDismissRequest = { viewModel.onEvent(ScreenEvent.ClearException) },
                     content = {
@@ -80,7 +80,7 @@ object OverviewScreen {
     @Composable
     fun CreateInstance(
         agent: Agent,
-        contracts: List<Contract>,
+        contracts: List<ContractModel>,
         waypoint: Waypoint,
         onContractEvent: (ScreenEvent) -> Unit
     ) {
@@ -128,7 +128,7 @@ private fun Preview() {
             startingFaction = "GALACTIC",
             shipCount = 1
         ),
-        contracts = ContractMocker.standardSet(),
+        contracts = ContractMocker.standardSetModel(),
         WaypointMocker.one(),
         onContractEvent = {}
     )

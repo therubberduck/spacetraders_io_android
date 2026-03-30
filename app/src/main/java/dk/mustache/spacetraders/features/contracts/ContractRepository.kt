@@ -1,8 +1,8 @@
 package dk.mustache.spacetraders.features.contracts
 
+import dk.mustache.spacetraders.api.RetrofitInstance
 import dk.mustache.spacetraders.api.helpers.ApiCall
 import dk.mustache.spacetraders.api.helpers.DataResult
-import dk.mustache.spacetraders.api.RetrofitInstance
 import dk.mustache.spacetraders.api.helpers.richCall
 import dk.mustache.spacetraders.common.MDate
 import retrofit2.Response
@@ -45,11 +45,12 @@ class ContractRepository @Inject constructor() {
             ),
             paymentOnAccepted = apiContract.terms.payment?.onAccepted
                 ?: throw NullPointerException("Contract paymentOnAccepted is null"),
-            paymentOnFulfilled = apiContract.terms.payment.onFulfilled ?: throw NullPointerException(
-                "Contract paymentOnFulfilled is null"
-            ),
-            deliver = apiContract.terms.deliver?.mapNotNull { deliverList ->
-                deliverList
+            paymentOnFulfilled = apiContract.terms.payment.onFulfilled
+                ?: throw NullPointerException(
+                    "Contract paymentOnFulfilled is null"
+                ),
+            deliver = apiContract.terms.deliver?.mapNotNull { apiDeliver ->
+                convertDeliver(apiDeliver ?: throw NullPointerException("Contract deliver is null"))
             } ?: throw NullPointerException("Contract deliver is null"),
             accepted = apiContract.accepted
                 ?: throw NullPointerException("Contract accepted is null"),
@@ -59,6 +60,19 @@ class ContractRepository @Inject constructor() {
                 apiContract.expiration ?: throw NullPointerException("Contract expiration is null")
             ),
             deadlineToAccept = apiContract.deadlineToAccept?.let { MDate.fromTimestamp(it) }
+        )
+    }
+
+    private fun convertDeliver(apiDeliver: ApiDeliver): Deliver {
+        return Deliver(
+            tradeSymbol = apiDeliver.tradeSymbol
+                ?: throw NullPointerException("Deliver tradeSymbol is null"),
+            destinationSymbol = apiDeliver.destinationSymbol
+                ?: throw NullPointerException("Deliver destinationSymbol is null"),
+            unitsRequired = apiDeliver.unitsRequired
+                ?: throw NullPointerException("Deliver unitsRequired is null"),
+            unitsFulfilled = apiDeliver.unitsFulfilled
+                ?: throw NullPointerException("Deliver unitsFulfilled is null")
         )
     }
 }

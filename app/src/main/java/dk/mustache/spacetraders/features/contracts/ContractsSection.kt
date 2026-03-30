@@ -22,9 +22,18 @@ import dk.mustache.spacetraders.ui.LabelValue
 import dk.mustache.spacetraders.ui.theme.Orange
 import dk.mustache.spacetraders.ui.theme.Typography
 
+data class ContractModel(
+    val id: String,
+    val state: Contract.ContractState,
+    val title: String,
+    val faction: String,
+    val deadline: String,
+    val expiration: String
+)
+
 object ContractsSection {
     @Composable
-    fun Create(contracts: List<Contract>, onEvent: (ScreenEvent) -> Unit) {
+    fun Create(contracts: List<ContractModel>, onEvent: (ScreenEvent) -> Unit) {
         FlowRow(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
             contracts.forEach {
                 ContractCard(it, onEvent)
@@ -33,7 +42,7 @@ object ContractsSection {
     }
 
     @Composable
-    fun ContractCard(contract: Contract, onEvent: (ScreenEvent) -> Unit) {
+    fun ContractCard(contract: ContractModel, onEvent: (ScreenEvent) -> Unit) {
         val open = remember { mutableStateOf(false) }
         Column(
             Modifier
@@ -42,7 +51,7 @@ object ContractsSection {
                 .clickable(onClick = { open.value = !open.value })
                 .padding(8.dp)
         ) {
-            val contractState = contract.state()
+            val contractState = contract.state
             val contractColor = when (contractState) {
                 Contract.ContractState.PENDING -> Orange
                 Contract.ContractState.ACCEPTED -> Color.Black
@@ -51,14 +60,14 @@ object ContractsSection {
             }
             Text(
                 style = Typography.titleSmall.copy(color = contractColor),
-                text = contract.type + ": " + contract.deliver.firstOrNull()?.tradeSymbol
+                text = contract.title
             )
             if (open.value) {
-                LabelValue("Faction", contract.factionSymbol)
+                LabelValue("Faction", contract.faction)
                 if (contractState == Contract.ContractState.PENDING) {
-                    LabelValue("Expiration", contract.expirationString())
+                    LabelValue("Expiration", contract.expiration)
                 }
-                LabelValue("Deadline", contract.deadlineString())
+                LabelValue("Deadline", contract.deadline)
                 if (contractState == Contract.ContractState.PENDING) {
                     Button(onClick = {
                         onEvent(AcceptContract(contract.id))
@@ -76,7 +85,7 @@ object ContractsSection {
 private fun Preview() {
     ContractsSection.Create(
         contracts = listOf(
-            ContractMocker.one()
+            ContractMocker.oneModel()
         ),
         onEvent = {})
 }
