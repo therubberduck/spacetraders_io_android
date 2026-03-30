@@ -10,7 +10,9 @@ import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.ui.graphics.vector.ImageVector
 import dagger.hilt.android.AndroidEntryPoint
-import dk.mustache.spacetraders.ui.SpaceTradersApp
+import dk.mustache.spacetraders.navigation.OverviewScreenRoute
+import dk.mustache.spacetraders.navigation.Route
+import dk.mustache.spacetraders.navigation.SpaceTradersApp
 import dk.mustache.spacetraders.ui.theme.SpaceTradersTheme
 
 @AndroidEntryPoint
@@ -24,13 +26,4 @@ class MainActivity : ComponentActivity() {
             }
         }
     }
-}
-
-enum class AppDestinations(
-    val label: String,
-    val icon: ImageVector,
-) {
-    HOME("Home", Icons.Default.Home),
-    FAVORITES("Favorites", Icons.Default.Favorite),
-    PROFILE("Profile", Icons.Default.AccountBox),
 }

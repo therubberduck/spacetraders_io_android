@@ -1,9 +1,9 @@
 package dk.mustache.spacetraders.mocking
 
-import dk.mustache.spacetraders.common.SimpleSymbol
-import dk.mustache.spacetraders.common.Trait
-import dk.mustache.spacetraders.waypoint.Chart
-import dk.mustache.spacetraders.waypoint.Waypoint
+import dk.mustache.spacetraders.common.dataclasses.SimpleSymbol
+import dk.mustache.spacetraders.common.dataclasses.Trait
+import dk.mustache.spacetraders.features.waypoint.Chart
+import dk.mustache.spacetraders.features.waypoint.Waypoint
 
 object WaypointMocker {
     fun one(

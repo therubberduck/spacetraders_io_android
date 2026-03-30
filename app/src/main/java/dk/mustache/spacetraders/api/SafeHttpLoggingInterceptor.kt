@@ -1,5 +1,6 @@
 package dk.mustache.spacetraders.api
 
+import dk.mustache.spacetraders.api.helpers.ResponseBuilder
 import okhttp3.Interceptor
 import okhttp3.Response
 import okhttp3.logging.HttpLoggingInterceptor

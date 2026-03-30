@@ -1,8 +1,8 @@
 package dk.mustache.spacetraders.mocking
 
-import dk.mustache.spacetraders.contracts.Contract
-import dk.mustache.spacetraders.contracts.Deliver
-import dk.mustache.spacetraders.mdate.MDate
+import dk.mustache.spacetraders.features.contracts.Contract
+import dk.mustache.spacetraders.features.contracts.Deliver
+import dk.mustache.spacetraders.common.MDate
 
 object ContractMocker {
     fun one(

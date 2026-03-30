@@ -1,6 +1,6 @@
 package dk.mustache.spacetraders.mocking
 
-import dk.mustache.spacetraders.common.Trait
+import dk.mustache.spacetraders.common.dataclasses.Trait
 
 object TraitMocker {
     fun one(

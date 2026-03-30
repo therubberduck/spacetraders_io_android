@@ -12,6 +12,9 @@ fun LabelValue(title: String, value: String) {
             style = Typography.labelSmall,
             text = "$title: "
         )
-        Text(value)
+        Text(
+            style = Typography.bodySmall,
+            text = value
+        )
     }
 }
