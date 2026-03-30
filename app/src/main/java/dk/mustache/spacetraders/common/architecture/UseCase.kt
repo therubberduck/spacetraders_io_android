@@ -27,7 +27,7 @@ abstract class UseCase<T> {
     }
 
     protected fun logError(e: Exception) {
-        Timber.Forest.e(e)
+        Timber.e(e)
         _error.value = e
     }
 

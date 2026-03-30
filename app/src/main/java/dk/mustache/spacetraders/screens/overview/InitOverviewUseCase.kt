@@ -17,7 +17,6 @@ import javax.inject.Singleton
 class InitOverviewUseCase @Inject constructor(
     private val agentDataStore: AgentDataStore,
     private val contractDataStore: ContractDataStore,
-    private val fleetDataStore: FleetDataStore,
     private val waypointDataStore: WaypointDataStore,
 ) : UseCase<Unit>() {
     suspend operator fun invoke() {
